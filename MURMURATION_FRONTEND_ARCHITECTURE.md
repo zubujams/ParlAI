@@ -51,10 +51,12 @@ Approval: Once the application passes QA and UAT, it is approved for deployment 
 Monitoring and Production Environment:
 
 Production Deployment: The application is deployed to the production environment, which is monitored to ensure its performance and stability.
+
 Monitoring Stack: The ELK Stack, Prometheus, and AWS CloudWatch are employed to monitor the application comprehensively, providing insights into logs, metrics, and operational health.
 
 Infrastructure Provisioning and Management:
 Terraform: Utilized for defining and provisioning the cloud infrastructure in an automated manner. Check murmuration-ci/main.tf file 
+
 AWS CloudFormation: Can be used for managing and configuring the resources provisioned by Terraform, ensuring that the cloud infrastructure is set up according to best practices and requirements. 
 
 Challenges:
