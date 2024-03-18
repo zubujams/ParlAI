@@ -1,6 +1,7 @@
 name: Murmuration CI to AWS with Terraform
 
-## This CI process is executed upon each approved push to the main branch of the project.
+## This CI process is executed upon each approved push to the main branch of the project. 
+## This would normally live in the .github/workflows directory.
 
 on:
   push:
