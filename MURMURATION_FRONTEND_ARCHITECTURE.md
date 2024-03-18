@@ -10,11 +10,10 @@ Tools and Process:
 
 Jira: Used by product owners to create and manage stories. This tool is essential for planning, tracking, and reporting on work throughout the software development lifecycle.
 GitHub: Serves as the version control system where developers will push their code. It acts as the central repository that maintains the version history and provides collaboration features.
-Product Owners' Role:
 
 Create and Design: Product owners are responsible for outlining the application's requirements and converting them into user stories in Jira. They prioritize these stories to guide the development process according to the project's goals and the client's needs.
 
-Challenges:
+#### Challenges: There aren't as many challenges here for a devops engineer as the planning is handled by business stakeholders/product. Perhaps consulting a devops engineer at this stage can help set expectation on how the app can be built and managed.
 
 ## 2. Development
 Developers' Workflow:
@@ -22,19 +21,19 @@ Developers' Workflow:
 Building the App: Developers write code to build the ParlAI application, implementing the features and requirements specified in the Jira stories.
 Version Control: After writing the code, developers push their updates to GitHub, initiating the CI/CD pipeline. GitHub acts as the collaborative platform for code reviews and managing pull requests before integration.
 
-Challenges: Hopefully in a real CICD environment, developers all have the same tools and developement environments provisions for consitency when writing code. However, this is solved  by having the devs push code into a SCM tool like github.
+#### Challenges: Hopefully in a real CICD environment, developers should all have the same tools and development environments provisioned for consistency when writing code. However, this is solved by having the devs push code into a SCM tool like github.
 
 ## 3. Building
 Automated Building and Packaging code:
 
-GitHub Actions: With the app already being hosted in Github, I decided to use Githhub Actions for simplicity. Github actions can automates the building and packaging of the application using Conda for dependency management and creating a consistent build environment.
+GitHub Actions: With the app already being hosted in Github, I decided to use Github Actions for simplicity. Github actions can automates the building and packaging of the application using Conda for dependency management and creating a consistent build environment.
 Unit Testing: pytest is used within GitHub Actions to run unit tests, ensuring that the code behaves as expected before it's deployed.
 Docker Deployment: After testing, the code is deployed to a Docker image using a Dockerfile, and the Docker image is then pushed to a development environment on AWS.
 
-Challenges:
-- Finding a build tool best suited for this project. While a python app is easier to work with when building, it comes with specific considerations.
- I first wanted to use Poetry to build/package the app, however, especially when dealing with complex dependencies or conflicts between packages, using Poetry can lead to build failures or the need for workarounds.
- This is why I elected to use Conda or Anaconda as a build tool. Conda works seamlessly with the code and is already being used in the projects Dockerfile.
+#### Challenges:
+- Finding a build tool best suited for this project: While a python app is easier to work with when building, it comes with specific considerations.
+ I first wanted to use Poetry to build/package the app, however, especially when dealing with complex dependencies or conflicts between packages, using [Poetry](https://python-poetry.org/) can lead to build failures or the need for workarounds.
+ This is why I elected to use [Conda](https://anaconda.org/conda-forge/python) or Anaconda as a build tool. Conda works seamlessly with the code and is already being used in the projects Dockerfile.
 
 - Also, I had to remove the CircleCI yml that was handling the process previously. This could cause problems with the build process in a productiong environment but overall Github actions streamlines the build without using ouside tools.
 
@@ -46,15 +45,16 @@ UAT: User Acceptance Testing (UAT) follows, where end-users validate the applica
 Feedback Loop: Any feedback from QA testers or UAT is communicated back to the developers for revisions. This ensures a continuous improvement loop where issues are addressed promptly.
 Approval: Once the application passes QA and UAT, it is approved for deployment to the production environment.
 
-Challenges: Testing can always be difficult especially when trying to maintain the testing enviroment.
+#### Challenges: Testing can always be difficult especially when trying to maintain the testing enviroment.
 
 ## 5. Deployment
 Monitoring and Production Environment:
 
 Production Deployment: The application is deployed to the production environment, which is monitored to ensure its performance and stability.
 Monitoring Stack: The ELK Stack, Prometheus, and AWS CloudWatch are employed to monitor the application comprehensively, providing insights into logs, metrics, and operational health.
+
 Infrastructure Provisioning and Management:
-Terraform: Utilized for defining and provisioning the cloud infrastructure in an automated and replicable manner.
-AWS CloudFormation: Used for managing and configuring the resources provisioned by Terraform, ensuring that the cloud infrastructure is set up according to best practices and requirements.
+Terraform: Utilized for defining and provisioning the cloud infrastructure in an automated manner. Check murmuration-ci/main.tf file 
+AWS CloudFormation: Can be used for managing and configuring the resources provisioned by Terraform, ensuring that the cloud infrastructure is set up according to best practices and requirements. 
 
 Challenges:
