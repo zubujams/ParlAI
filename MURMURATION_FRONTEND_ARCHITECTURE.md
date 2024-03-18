@@ -1,9 +1,11 @@
-Murmuration CI Pipeline Project with ParlAI by Jamaine Azubuike
+# Murmuration CI Pipeline Project with ParlAI by Jamaine Azubuike
 
 The goal of this project is to create a CI/CD Pipeline for an open-source Python-based platform that helps researchers share, train, and test dialog models.
 
+<img width="535" alt="Screenshot 2024-03-17 at 10 42 05 PM" src="https://github.com/zubujams/ParlAI/assets/52971863/5b1798be-ad51-4342-8937-28f90c4dcf1e">
 
-# 1. Planning
+
+## 1. Planning
 Tools and Process:
 
 Jira: Used by product owners to create and manage stories. This tool is essential for planning, tracking, and reporting on work throughout the software development lifecycle.
@@ -14,7 +16,7 @@ Create and Design: Product owners are responsible for outlining the application'
 
 Challenges:
 
-# 2. Development
+## 2. Development
 Developers' Workflow:
 
 Building the App: Developers write code to build the ParlAI application, implementing the features and requirements specified in the Jira stories.
@@ -22,7 +24,7 @@ Version Control: After writing the code, developers push their updates to GitHub
 
 Challenges: Hopefully in a real CICD environment, developers all have the same tools and developement environments provisions for consitency when writing code. However, this is solved  by having the devs push code into a SCM tool like github.
 
-# 3. Building
+## 3. Building
 Automated Building and Packaging code:
 
 GitHub Actions: With the app already being hosted in Github, I decided to use Githhub Actions for simplicity. Github actions can automates the building and packaging of the application using Conda for dependency management and creating a consistent build environment.
@@ -36,7 +38,7 @@ Challenges:
 
 - Also, I had to remove the CircleCI yml that was handling the process previously. This could cause problems with the build process in a productiong environment but overall Github actions streamlines the build without using ouside tools.
 
-# 4. Testing
+## 4. Testing
 Quality Assurance and User Acceptance:
 
 QA Testing: The application undergoes Quality Assurance (QA) testing in a dedicated environment where test cases are executed to verify the functionality and performance against the requirements.
@@ -46,7 +48,7 @@ Approval: Once the application passes QA and UAT, it is approved for deployment 
 
 Challenges: Testing can always be difficult especially when trying to maintain the testing enviroment.
 
-# 5. Deployment
+## 5. Deployment
 Monitoring and Production Environment:
 
 Production Deployment: The application is deployed to the production environment, which is monitored to ensure its performance and stability.
