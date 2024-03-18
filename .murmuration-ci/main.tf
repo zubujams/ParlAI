@@ -89,3 +89,4 @@ resource "aws_db_subnet_group" "default" {
 
 
 # You will want to make sure to run this file first before the CI-for-parlai.yml
+# Just like the GithubCI file, in larger projects, it may be best to separate tf files for modularity. This is just for the projects purposes.
