@@ -1,0 +1,47 @@
+name: Murmuration CI to AWS with Terraform
+
+## This CI process is executed upon each approved push to the main branch of the project.
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Conda Environment
+        run: |
+          conda create --name parlai python=3.8
+          conda activate parlai
+      
+      - name: Install dependencies
+        run: |
+          conda env update --file environment.yml
+
+      - name: Run unit tests
+        run: |
+          conda activate parlai
+          pytest
+      ## Assuming that the tests pass.
+
+      - name: Build Docker image
+        run: docker build -t parlai-app .
+
+      - name: Push Docker image to registry
+        run: |
+          echo $MY_DOCKER_PASSWORD | docker login -u $MY_DOCKER_USERNAME --password-stdin
+          docker push parlai-app
+
+      - name: Deploy to AWS
+        run: |
+          terraform init
+          terraform apply -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+## Keeping this on one file is easier to manage and understand when the project or the CI/CD pipeline is simple like this. However, As the CI/CD process grows, the single file can become large and unwieldy, making it harder to manage and understand.
+## It will be better to split the yml files into separate ones for each job then. Separate files for CI, Iac, Deployment etc..
