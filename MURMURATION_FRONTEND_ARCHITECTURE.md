@@ -41,8 +41,11 @@ Docker Deployment: After testing, the code is deployed to a Docker image using a
 Quality Assurance and User Acceptance:
 
 QA Testing: The application undergoes Quality Assurance (QA) testing in a dedicated environment where test cases are executed to verify the functionality and performance against the requirements.
+
 UAT: User Acceptance Testing (UAT) follows, where end-users validate the application against their expectations.
+
 Feedback Loop: Any feedback from QA testers or UAT is communicated back to the developers for revisions. This ensures a continuous improvement loop where issues are addressed promptly.
+
 Approval: Once the application passes QA and UAT, it is approved for deployment to the production environment.
 
 #### Challenges: Testing can always be difficult especially when trying to maintain the testing enviroment.
