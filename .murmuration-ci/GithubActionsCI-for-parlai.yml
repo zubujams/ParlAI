@@ -19,7 +19,7 @@ jobs:
           conda create --name parlai python=3.8
           conda activate parlai
           
-      ## Install all the dependencies to run the code and sets up the required environments
+      ## Install all the dependencies to run the code and sets up the required environments that's defined in the requirements.txt file
       - name: Install dependencies
         run: |
           conda env update --file requirements.txt
